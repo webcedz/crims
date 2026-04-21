@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CrimProgram | The First Pillar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="crim.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #343a40;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #e3f2fd;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .nav a:hover {
+            color: #90caf9;
+        }
+
+
+        .options-container {
+            position: absolute;
+            top: 80px;
+            right: 35px;
+        }
+
+        .options-btn {
+            background-color: #6c757d;
+            color: white;
+            padding: 9px 19px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .dropdown {
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background: rgba(52, 58, 64, 0.95);
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.6s ease;
+        }
+
+        .options-container:hover .dropdown {
+            max-height: 400px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid #495057;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .options-container:hover .dropdown a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown a:nth-child(1) { transition-delay: 0.1s; }
+        .dropdown a:nth-child(2) { transition-delay: 0.2s; }
+        .dropdown a:nth-child(3) { transition-delay: 0.3s; }
+        .dropdown a:nth-child(4) { transition-delay: 0.4s; }
+        .dropdown a:nth-child(5) { transition-delay: 0.5s; }
+        .dropdown a:nth-child(6) { transition-delay: 0.6s; }
+        .dropdown a:nth-child(7) { transition-delay: 0.7s; }
+
+        .dropdown a:hover {
+            background-color: #5bc0de;
+        }
+
+
+        .left-box {
+            position: fixed;
+            left: -250px;
+            top: 120px;
+            width: 220px;
+            background: rgba(52, 58, 64, 0.95);
+            color: white;
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            transition: 0.8s;
+            z-index: 90;
+        }
+
+        .left-box.show {
+            left: 0;
+        }
+
+        .left-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .left-options a {
+            display: block;
+            padding: 8px;
+            margin: 5px 0;
+            background: #6c757d;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: 0.4s;
+        }
+
+        .left-box.show .left-options a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .left-options a:nth-child(1) { transition-delay: 0.2s; }
+        .left-options a:nth-child(2) { transition-delay: 0.3s; }
+        .left-options a:nth-child(3) { transition-delay: 0.4s; }
+        .left-options a:nth-child(4) { transition-delay: 0.5s; }
+        .left-options a:nth-child(5) { transition-delay: 0.6s; }
+        .left-options a:nth-child(6) { transition-delay: 0.7s; }
+
+
+        .right-tracker {
+            position: fixed;
+            right: 20px;
+            top: 150px;
+            z-index: 90;
+        }
+
+        .track-item {
+            padding: 8px 15px;
+            margin: 8px 0;
+            background: rgba(0,0,0,0.4);
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .crime {
+            background: #5bc0de;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 15px;
+            margin: 8px 0;
+            color: rgb(0, 0, 0);
+            border-radius: 5px;
+        }
+
+        .background {
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 100px;
+            background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .content-page {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .content-page h1 {
+            margin-bottom: 20px;
+            font-size: 45spx;
+            font-family: 'Courier New', monospace;
+        }
+
+        .content-page h2 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-page p {
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .definition {
+            background: #f1f3f5;
+            padding: 10px;
+            border-left: 4px solid #5bc0de;
+            margin: 10px 0;
+        }
+
+        .definition1 {
+            background: #f1f3f5;
+            padding: 10px;
+            border-left: 4px solid #c3001a;
+            margin: 10px 0;
+        }
+
+        .definition3 {
+            background: #f1f3f5;
+            padding: 10px;
+            border-left: 4px solid #0e7a00;
+            margin: 10px 0;
+            opacity: 75%
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <div class="header">
+        <div class="logo">CrimProgram</div>
+
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contactinfo.html">Contact Page</a>
+        </div>
+
+        <div class="options-container">
+            <div class="options-btn">Quick Nav</div>
+
+            <div class="dropdown">
+                <a href="index.html">Home</a>
+                <a href="Introduction.html">Introduction</a>
+                <a href="crime.html">Crime</a>
+                <a href="crim&vic.html">Criminal & Victim</a>
+                <a href="justice.html">Justice</a>
+                <a href="evolution.html">Evolution of Law</a>
+                <a href="firstpillar.html">The First Pillar</a>
+                <a href="contactinfo.html">Contact Page</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="left-box" id="leftBox">
+        <h3>Wanna learn more?</h3>
+        <div class="left-options">
+            <a href="crime.html"> Crime </a>
+            <a href="crim&vic.html">Criminal and Victim2</a>
+            <a href="evolution.html"> Evolution of Law</a>
+            <a href="justice.html"> Justice</a>
+            <a href="firstpillar.html"> The First Pillar</a>
+        </div>
+    </div>
+
+
+    <div class="right-tracker">
+        <div class="track-item" id="intro">Introduction</div>
+        <div class="track-item" id="p1">Crime</div>
+        <div class="track-item" id="p2">Criminal and VIctim</div>
+        <div class="track-item" id="p3">Evolution of Law</div>
+        <div class="track-item" id="p4">Justice</div>
+        <div class="crime" id="p4">1st Pillar</div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="background">
+        <div class="content-page">
+
+            <h1 id="section-p1" align="center" font-size="55px"><b><U>1st PILLAR: THE LAW OF ENFORCEMENT</b></u></h1>
+     
+
+            <h2 id="section-p1">Law Enforcement Pillar (Law Enforcement)</h2>
+            <div class="definition">➤ The prime mover of the system or the initiator of the criminal justice cycle. The front liner in the process.</div>
+            <div class="definition">➤ The first pillar of the Philippine Criminal Justice System consists mainly of the PNP.</div>
+            <div class="definition">➤ The PNP shall take the lead in the investigation and gathering of evidence. They respond to any violation of peace and safety in the community.</div>
+            <div class="definition">➤ Its primary goal is crime prevention.</div>
+            <div class="definition">➤ This pillar also involves different law enforcement agencies under the Executive branch of the
+govemment such as NBI. PDEA. Bureau of Customs, Bureau of Immigration, and Philippine
+Coast Guard.</div>
+            
+
+
+                
+        
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <p>© 2026 CrimProgram | The Philippine Criminal & Justice System.</p>
+    </div>
+
+    <script>
+    
+        setTimeout(() => {
+            document.getElementById("leftBox").classList.add("show");
+        }, 800);
+
+  
+       
+        
+    </script>
+
+</body>
+</html>

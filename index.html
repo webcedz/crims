@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRIMPROGRAM | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="crim.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #343a40;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #e3f2fd;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .nav a:hover {
+            color: #90caf9;
+        }
+
+       
+        .options-container {
+            position: absolute;
+            top: 80px;
+            right: 35px;
+        }
+
+        .options-btn {
+            background-color: #6c757d;
+            color: white;
+            padding: 9px 19px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .dropdown {
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background: rgba(52, 58, 64, 0.95);
+            border-radius: 8px;
+            overflow: hidden;
+
+            max-height: 0;
+            transition: max-height 0.6s ease;
+        }
+
+        .options-container:hover .dropdown {
+            max-height: 400px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid #495057;
+
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .options-container:hover .dropdown a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown a:nth-child(1) { transition-delay: 0.1s; }
+        .dropdown a:nth-child(2) { transition-delay: 0.2s; }
+        .dropdown a:nth-child(3) { transition-delay: 0.3s; }
+        .dropdown a:nth-child(4) { transition-delay: 0.4s; }
+        .dropdown a:nth-child(5) { transition-delay: 0.5s; }
+        .dropdown a:nth-child(6) { transition-delay: 0.6s; }
+        .dropdown a:nth-child(7) { transition-delay: 0.7s; }
+        .dropdown a:nth-child(8) { transition-delay: 0.8s; }
+        .dropdown a:nth-child(9) { transition-delay: 0.9s; }
+
+
+        .dropdown a:hover {
+            background-color: #5bc0de;
+        }
+
+        .background {
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 40px;
+            background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.75); /* 75% transparent */
+            backdrop-filter: blur(6px);
+            padding: 80px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 1s;
+            max-width: 600px;
+        }
+
+        .content-box.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-box h1 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-box p {
+            margin-bottom: 25px;
+        }
+
+
+        .link {
+            background-color: #6c757d;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            
+        }
+
+        .link:hover {
+            background-color: #5bc0de;
+            text-decoration: none;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            text-size: 30px;
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo">CrimProgram</div>
+
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contactinfo.html"></a>Contact Page</a>
+        </div>
+
+        <div class="options-container">
+            <div class="options-btn">Quick Nav</div>
+
+            <<div class="dropdown">
+                <a href="index.html">Home</a>
+                <a href="Introduction.html">Introduction</a>
+                <a href="crime.html">Crime</a>
+                <a href="crim&vic.html">Criminal & Victim</a>
+                <a href="justice.html">Justice</a>
+                <a href="evolution.html">Evolution of Law</a>
+                <a href="firstpillar.html">The First Pillar</a>
+                <a href="contactinfo.html">Contact Page</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="background">
+        <div class="content-box" id="box">
+            <h1>COLLEGE OF CRIMINAL JUSTICE EDUCATION</h1>
+            <p>Historical development and principles of criminal justice.</p>
+            <div><a href="Introduction.html" class="link">Want to learn about it?</a></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 CrimProgram | The Philippine Criminal & Justice System.</p>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById("box").classList.add("show");
+        }, 1000);
+    </script>
+
+</body>
+</html>

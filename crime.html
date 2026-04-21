@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRIMPROGRAM | Crime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="crim.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #343a40;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #e3f2fd;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .nav a:hover {
+            color: #90caf9;
+        }
+
+
+        .options-container {
+            position: absolute;
+            top: 80px;
+            right: 35px;
+        }
+
+        .options-btn {
+            background-color: #6c757d;
+            color: white;
+            padding: 9px 19px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .dropdown {
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background: rgba(52, 58, 64, 0.95);
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.6s ease;
+        }
+
+        .options-container:hover .dropdown {
+            max-height: 400px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid #495057;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .options-container:hover .dropdown a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown a:nth-child(1) { transition-delay: 0.1s; }
+        .dropdown a:nth-child(2) { transition-delay: 0.2s; }
+        .dropdown a:nth-child(3) { transition-delay: 0.3s; }
+        .dropdown a:nth-child(4) { transition-delay: 0.4s; }
+        .dropdown a:nth-child(5) { transition-delay: 0.5s; }
+        .dropdown a:nth-child(6) { transition-delay: 0.6s; }
+        .dropdown a:nth-child(7) { transition-delay: 0.7s; }
+
+        .dropdown a:hover {
+            background-color: #5bc0de;
+        }
+
+
+        .left-box {
+            position: fixed;
+            left: -250px;
+            top: 120px;
+            width: 220px;
+            background: rgba(52, 58, 64, 0.95);
+            color: white;
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            transition: 0.8s;
+            z-index: 90;
+        }
+
+        .left-box.show {
+            left: 0;
+        }
+
+        .left-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .left-options a {
+            display: block;
+            padding: 8px;
+            margin: 5px 0;
+            background: #6c757d;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: 0.4s;
+        }
+
+        .left-box.show .left-options a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .left-options a:nth-child(1) { transition-delay: 1s; }
+        .left-options a:nth-child(2) { transition-delay: 2s; }
+        .left-options a:nth-child(3) { transition-delay: 3s; }
+        .left-options a:nth-child(4) { transition-delay: 4s; }
+        .left-options a:nth-child(5) { transition-delay: 5s; }
+
+
+        .right-tracker {
+            position: fixed;
+            right: 20px;
+            top: 150px;
+            z-index: 90;
+
+        }
+
+        .track-item {
+            padding: 8px 15px;
+            margin: 8px 0;
+            background: rgba(0,0,0,0.4);
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .crime {
+            background: #5bc0de;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 15px;
+            margin: 8px 0;
+            color: rgb(0, 0, 0);
+            border-radius: 5px;
+        }
+
+        .background {
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 100px;
+            background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .content-page {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+            animation: fadeUp 1s ease;
+        }
+
+        @keyframes fadeUp {
+            from {opacity: 0; transform: translateY(40px);}
+            to {opacity: 1; transform: translateY(0);}
+        
+        }
+
+        .content-page h1 {
+            margin-bottom: 20px;
+            font-size: 65px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .content-page h2 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-page p {
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .definition {
+            background: #f1f3f5;
+            padding: 10px;
+            border-left: 4px solid #5bc0de;
+            margin: 10px 0;
+        }
+
+        .definition1 {
+            background: #f1f3f5;
+            padding: 10px;
+            border-left: 4px solid #c3001a;
+            margin: 10px 0;
+        }
+
+        .definition3 {
+            background: #f1f3f5;
+            padding: 10px;
+            border-left: 4px solid #0e7a00;
+            margin: 10px 0;
+            opacity: 75%
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <div class="header">
+        <div class="logo">Crim  Program</div>
+
+        <div class="nav">
+             <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contactinfo.html">Contact Page</a>
+        </div>
+
+        <div class="options-container">
+            <div class="options-btn">Quick Nav</div>
+
+            <div class="dropdown">
+                <a href="index.html">Home</a>
+                <a href="Introduction.html">Introduction</a>
+                <a href="crime.html">Crime</a>
+                <a href="crim&vic.html">Criminal & Victim</a>
+                <a href="justice.html">Justice</a>
+                <a href="evolution.html">Evolution of Law</a>
+                <a href="firstpillar.html">The First Pillar</a>
+                <a href="contactinfo.html">Contact Page</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="left-box" id="leftBox">
+        <h3>Wanna learn more?</h3>
+        <div class="left-options">
+            <a href="crime.html"> Crime </a>
+            <a href="crim&vic.html">Criminal and Victim2</a>
+            <a href="evolution.html"> Evolution of Law</a>
+            <a href="justice.html"> Justice</a>
+            <a href="firstpillar.html"> The First Pillar</a>
+        </div>
+    </div>
+
+
+    <div class="right-tracker">
+        <div class="track-item" id="intro">Introduction</div>
+        <div class="crime" id="p1">Crime</div>
+        <div class="track-item" id="p2">Criminal and VIctim</div>
+        <div class="track-item" id="p3">Evolution of Law</div>
+        <div class="track-item" id="p4">Justice</div>
+        <div class="track-item" id="p4">The First Pillar</div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="background">
+        <div class="content-page">
+
+            <h1 id="section-p1" align="center" font-size="55px"><b>CRIME!</b></h1>
+     
+
+            <h2 id="section-p1">What is Crime?</h2>
+            <p>Crime is an act or omission punishable by public laws.</p>
+            <p>There are four specific types of crime:</p>
+            <div class="definition"><b>A. Felonies: </b>Referes to those violations of the Revised Penal Code.</div>
+            <div class="definition"><b>B. Offenses: </b>Refers to those violations of statutes of Special Laws.</div>
+            <div class="definition"><b>C. Infraction or Misdemeanor: </b>Refers to those violations of ordinates.</div>
+            <div class="definition"><b>D. Delinquency: </b>Refes to those violations commited by minor offenders.</div>
+
+
+
+            <h2 id="section-p1">Concepts of Crime, Law, and Justice</h2>
+            <div class="definition1"><b></b>The 1987 Philippine COnstitution provided the distribution of the great powers
+            of the goverment its three branchhes: <b>Executive, Legistative, and Judiciary.</b> This 
+        three branches are co-equal and they observe separation of powers.</div>
+
+        <div class="definition3"><b><i>Linmitations on the power</i></b> of the legistative branch in enacting penal legistations:
+            <p>
+                <u>
+                    <li>a. <i>No ex post facto</i> law or bill of attainder shall be enacted (Art. III, secd. 22 of the Constitution).</li>
+                    <li>1. <b>Ex post facto</b> law makes an act donw before the passage of the law punishable.</li>
+                    <li>2. <b>Bill of attainder</b> is a legistativee act which inflicts punishments without trial.</li>
+                    <li>b. No person shall be held to anser for a criminal offense without due process of law (Art. III, sec. 22 of the Constitution).</li>
+                </u>
+            </p>
+        </div>
+
+        
+
+
+
+
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <p>© 2026 CrimProgram | The Philippine Criminal & Justice System.</p>
+    </div>
+
+    <script>
+    
+        setTimeout(() => {
+            document.getElementById("leftBox").classList.add("show");
+        }, 800);
+
+  
+       
+        
+    </script>
+
+</body>
+</html>

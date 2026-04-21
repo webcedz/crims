@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRIMPROGRAM | About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="crim.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #343a40;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: 0.4s;
+        }
+
+        .header.scrolled {
+            padding: 12px 50px;
+            background-color: rgba(52,58,64,0.95);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #e3f2fd;
+            animation: fadeDown 1s ease;
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 25px;
+            position: relative;
+        }
+
+        .nav a::after {
+            content: "";
+            width: 0;
+            height: 2px;
+            background: #90caf9;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+   
+        .options-container {
+            position: absolute;
+            top: 80px;
+            right: 35px;
+        }
+
+        .link {
+
+            position:absolute;
+            text-align: center;
+        }
+
+        .options-btn {
+            background-color: #6c757d;
+            color: white;
+            padding: 9px 19px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .options-btn:hover {
+            background-color: #5bc0de;
+            transform: scale(1.05);
+        }
+
+        .dropdown {
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background: rgba(52, 58, 64, 0.95);
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.6s ease;
+        }
+
+        .options-container:hover .dropdown {
+            max-height: 400px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid #495057;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .options-container:hover .dropdown a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown a:hover {
+            background-color: #5bc0de;
+        }
+
+       
+        .background {
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 40px;
+            background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: zoomBg 20s infinite alternate ease-in-out;
+        }
+
+     
+        .content-box {
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 80px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: 1s;
+            max-width: 600px;
+        }
+
+        .content-box:hover {
+            transform: scale(1.03);
+        }
+
+        .content-box.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-box h1 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            animation: fadeUp 1.2s ease;
+        }
+
+        .content-box p {
+            margin-bottom: 25px;
+            animation: fadeUp 1.5s ease;
+        }
+
+        .btn {
+            background-color: #6c757d;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #5bc0de;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(91,192,222,0.5);
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomBg {
+            from {
+                background-size: 100%;
+            }
+            to {
+                background-size: 110%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header" id="header">
+        <div class="logo">CrimProgram</div>
+
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contactinfo.html">Contact Page</a>
+        </div>
+
+        <div class="options-container">
+            <div class="options-btn">Quick Nav</div>
+
+            <div class="dropdown">
+                <a href="index.html">Home</a>
+                <a href="Introduction.html">Introduction</a>
+                <a href="crime.html">Crime</a>
+                <a href="crim&vic.html">Criminal & Victim</a>
+                <a href="justice.html">Justice</a>
+                <a href="evolution.html">Evolution of Law</a>
+                <a href="firstpillar.html">The First Pillar</a>
+                <a href="contactinfo.html">Contact Page</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="background">
+        <div class="content-box" id="box">
+            <h1>About Us</h1>
+            <p>CrimProgram is created with the purpose of educating people about Philippine law, its history, and the field of criminology in a clear and accessible way. Developed by criminology students, this platform uses a modern approach to learning by providing information through a website that anyone can easily access online. Our goal is to make criminology topics easier to understand by allowing users to quickly search for subjects and find relevant, reliable content. Through this initiative, we aim to help expand available learning resources and support individuals who are interested in studying criminology or gaining knowledge about the justice system.</p>
+            <div ><a href="index.html" class="link">Back</a></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 CrimProgram | The Philippine Criminal & Justice System.</p>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById("box").classList.add("show");
+        }, 800);
+
+        // Header shrink on scroll
+        window.addEventListener("scroll", function() {
+            document.getElementById("header").classList.toggle("scrolled", window.scrollY > 50);
+        });
+    </script>
+
+</body>
+</html>
