@@ -45,11 +45,8 @@
             color: #90caf9;
         }
 
-       
         .options-container {
-            position: absolute;
-            top: 80px;
-            right: 35px;
+            position: relative;
         }
 
         .options-btn {
@@ -68,7 +65,6 @@
             background: rgba(52, 58, 64, 0.95);
             border-radius: 8px;
             overflow: hidden;
-
             max-height: 0;
             transition: max-height 0.6s ease;
         }
@@ -83,7 +79,6 @@
             color: white;
             text-decoration: none;
             border-bottom: 1px solid #495057;
-
             opacity: 0;
             transform: translateY(-10px);
             transition: all 0.4s ease;
@@ -94,17 +89,6 @@
             transform: translateY(0);
         }
 
-        .dropdown a:nth-child(1) { transition-delay: 0.1s; }
-        .dropdown a:nth-child(2) { transition-delay: 0.2s; }
-        .dropdown a:nth-child(3) { transition-delay: 0.3s; }
-        .dropdown a:nth-child(4) { transition-delay: 0.4s; }
-        .dropdown a:nth-child(5) { transition-delay: 0.5s; }
-        .dropdown a:nth-child(6) { transition-delay: 0.6s; }
-        .dropdown a:nth-child(7) { transition-delay: 0.7s; }
-        .dropdown a:nth-child(8) { transition-delay: 0.8s; }
-        .dropdown a:nth-child(9) { transition-delay: 0.9s; }
-
-
         .dropdown a:hover {
             background-color: #5bc0de;
         }
@@ -112,7 +96,7 @@
         .background {
             width: 100%;
             min-height: 100vh;
-            padding-top: 40px;
+            padding-top: 80px;
             background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f');
             background-size: cover;
             background-position: center;
@@ -122,7 +106,7 @@
         }
 
         .content-box {
-            background-color: rgba(255, 255, 255, 0.75); /* 75% transparent */
+            background-color: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(6px);
             padding: 80px;
             border-radius: 12px;
@@ -149,21 +133,16 @@
             margin-bottom: 25px;
         }
 
-
         .link {
             background-color: #6c757d;
             color: white;
             padding: 12px 30px;
-            border: none;
             border-radius: 6px;
             text-decoration: none;
-            cursor: pointer;
-            
         }
 
         .link:hover {
             background-color: #5bc0de;
-            text-decoration: none;
         }
 
         .footer {
@@ -174,57 +153,55 @@
         }
 
         h1 {
-            text-size: 30px;
-
+            font-size: 30px;
         }
-
     </style>
 </head>
 
 <body>
 
-    <div class="header">
-        <div class="logo">CrimProgram</div>
+<div class="header">
+    <div class="logo">CrimProgram</div>
 
-        <div class="nav">
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contactinfo.html">Contact Page</a>
+    </div>
+
+    <div class="options-container">
+        <div class="options-btn">Quick Nav</div>
+
+        <div class="dropdown">
             <a href="index.html">Home</a>
-            <a href="about.html">About</a>
+            <a href="Introduction.html">Introduction</a>
+            <a href="crime.html">Crime</a>
+            <a href="crim&vic.html">Criminal & Victim</a>
+            <a href="justice.html">Justice</a>
+            <a href="evolution.html">Evolution of Law</a>
+            <a href="firstpillar.html">The First Pillar</a>
             <a href="contactinfo.html">Contact Page</a>
         </div>
-
-        <div class="options-container">
-            <div class="options-btn">Quick Nav</div>
-
-            <<div class="dropdown">
-                <a href="index.html">Home</a>
-                <a href="Introduction.html">Introduction</a>
-                <a href="crime.html">Crime</a>
-                <a href="crim&vic.html">Criminal & Victim</a>
-                <a href="justice.html">Justice</a>
-                <a href="evolution.html">Evolution of Law</a>
-                <a href="firstpillar.html">The First Pillar</a>
-                <a href="contactinfo.html">Contact Page</a>
-            </div>
-        </div>
     </div>
+</div>
 
-    <div class="background">
-        <div class="content-box" id="box">
-            <h1>COLLEGE OF CRIMINAL JUSTICE EDUCATION</h1>
-            <p>Historical development and principles of criminal justice.</p>
-            <div><a href="Introduction.html" class="link">Want to learn about it?</a></div>
-        </div>
+<div class="background">
+    <div class="content-box" id="box">
+        <h1>COLLEGE OF CRIMINAL JUSTICE EDUCATION</h1>
+        <p>Historical development and principles of criminal justice.</p>
+        <a href="Introduction.html" class="link">Want to learn about it?</a>
     </div>
+</div>
 
-    <div class="footer">
-        <p>© 2026 CrimProgram | The Philippine Criminal & Justice System.</p>
-    </div>
+<div class="footer">
+    <p>© 2026 CrimProgram | The Philippine Criminal & Justice System.</p>
+</div>
 
-    <script>
-        setTimeout(() => {
-            document.getElementById("box").classList.add("show");
-        }, 1000);
-    </script>
+<script>
+    setTimeout(() => {
+        document.getElementById("box").classList.add("show");
+    }, 1000);
+</script>
 
 </body>
 </html>
